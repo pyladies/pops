@@ -1,0 +1,623 @@
+POP: 1
+Title: POP Purpose and Guidelines
+Version: $Revision$
+Last-Modified: $Date$
+Author: Carol Willing
+Status: Active
+Type: Process
+Content-Type: text/x-rst
+Created: 14-Apr-2015
+Post-History: 14-Apr-2015
+
+
+What is a POP?
+==============
+
+POP stands for PyLadies Organizer Proposal.  A POP is a design
+document providing information to the PyLadies community, or describing
+a new feature for PyLadies or its processes or environment.  The POP
+should provide a concise technical specification of the feature and a
+rationale for the feature.
+
+We intend POPs to be the primary mechanisms for proposing major new
+features, for collecting community input on an issue, and for
+documenting the design decisions that have gone into PyLadies.  The POP
+author is responsible for building consensus within the community and
+documenting dissenting opinions.
+
+Because the POPs are maintained as text files in a versioned
+repository, their revision history is the historical record of the
+proposal [1]_.
+
+
+POP Types
+=========
+
+There are three kinds of POP:
+
+1. A **Standards Track** POP describes a new feature or implementation
+   for PyLadies. It may also describe an interoperability standard that will
+   be supported outside the standard library for current PyLadies versions
+   before a subsequent POP adds standard library support in a future
+   version.
+
+2. An **Informational** POP describes a PyLadies design issue, or
+   provides general guidelines or information to the PyLadies community,
+   but does not propose a new feature.  Informational POPs do not
+   necessarily represent a PyLadies community consensus or
+   recommendation, so users and implementers are free to ignore
+   Informational POPs or follow their advice.
+
+3. A **Process** POP describes a process surrounding PyLadies, or
+   proposes a change to (or an event in) a process.  Process POPs are
+   like Standards Track POPs but apply to areas other than the PyLadies
+   language itself.  They may propose an implementation, but not to
+   PyLadies's codebase; they often require community consensus; unlike
+   Informational POPs, they are more than recommendations, and users
+   are typically not free to ignore them.  Examples include
+   procedures, guidelines, changes to the decision-making process, and
+   changes to the tools or environment used in PyLadies development.
+   Any meta-POP is also considered a Process POP.
+
+
+POP Workflow
+============
+
+
+PyLadies's BDFL
+-------------
+
+There are several reference in this POP to the "BDFL". This acronym stands
+for "Benevolent Dictator for Life" and presently refers to Lynn Root, the
+current PyLadies liason to the PSF.
+
+
+POP Editors
+-----------
+
+The POP editors are individuals responsible for managing the administrative
+and editorial aspects of the POP workflow (e.g. assigning POP numbers and
+changing their status).  See `POP Editor Responsibilities & Workflow`_ for
+details.  The current editors are:
+
+* Selena Deckelman
+* Jackie Kaziel
+* Esther Nam
+* Audrey Roy
+* Carol Willing
+
+POP editorship is by invitation of the current editors.  The address
+<POPs@PyLadies.org> is a mailing list for contacting the POP editors.  All
+email related to POP administration (such as requesting a POP number
+or providing an updated version of a POP for posting) should be sent to
+this address (no cross-posting please).
+
+
+Submitting a POP
+----------------
+
+The POP process begins with a new idea for PyLadies.  It is highly
+recommended that a single POP contain a single key proposal or new
+idea. Small enhancements or patches often don't need
+a POP and can be injected into the PyLadies development workflow with a
+patch submission to the PyLadies `issue tracker`_. The more focused the
+POP, the more successful it tends to be.  The POP editors reserve the
+right to reject POP proposals if they appear too unfocused or too
+broad.  If in doubt, split your POP into several well-focused ones.
+
+Each POP must have a champion -- someone who writes the POP using the
+style and format described below, shepherds the discussions in the
+appropriate forums, and attempts to build community consensus around
+the idea.  The POP champion (a.k.a. Author) should first attempt to
+ascertain whether the idea is POP-able.  Posting to the
+comp.lang.PyLadies newsgroup (a.k.a. PyLadies-list@PyLadies.org mailing
+list) or the PyLadies-ideas mailing list is the best way to go about this.
+
+Vetting an idea publicly before going as far as writing a POP is meant
+to save the potential author time. Many ideas have been brought
+forward for changing PyLadies that have been rejected for various
+reasons. Asking the PyLadies community first if an idea is original
+helps prevent too much time being spent on something that is
+guaranteed to be rejected based on prior discussions (searching
+the internet does not always do the trick). It also helps to make sure
+the idea is applicable to the entire community and not just the author.
+Just because an idea sounds good to the author does not
+mean it will work for most people in most areas where PyLadies is used.
+
+Once the champion has asked the PyLadies community as to whether an
+idea has any chance of acceptance, a draft POP should be presented to
+PyLadies-ideas.  This gives the author a chance to flesh out the draft
+POP to make properly formatted, of high quality, and to address
+initial concerns about the proposal.
+
+Following a discussion on PyLadies-ideas, the proposal should be sent as a
+draft POP to the POP editors <POPs@PyLadies.org>.  The draft must be written
+in POP style as described below, else it will be sent back without further
+regard until proper formatting rules are followed (although minor errors
+will be corrected by the editors).
+
+If the POP editors approve, they will assign the POP a number, label it
+as Standards Track, Informational, or Process, give it status "Draft",
+and create and check-in the initial draft of the POP.  The POP editors
+will not unreasonably deny a POP.  Reasons for denying POP status
+include duplication of effort, being technically unsound, not
+providing proper motivation or addressing backwards compatibility, or
+not in keeping with the PyLadies philosophy.  The BDFL can be consulted
+during the approval phase, and is the final arbiter of the draft's
+POP-ability.
+
+Developers with hg push privileges for the `POP repository`_ may claim
+POP numbers directly by creating and committing a new POP. When doing so,
+the developer must handle the tasks that would normally be taken care of by
+the POP editors (see `POP Editor Responsibilities & Workflow`_). This
+includes ensuring the initial version meets the expected standards for
+submitting a POP. Alternately, even developers may choose to submit POPs
+through the POP editors. When doing so, let the POP editors know you have
+hg push privileges and they can guide you through the process of updating
+the POP repository directly.
+
+As updates are necessary, the POP author can check in new versions if they
+(or a collaborating developer) have hg push privileges, or else they can
+email new POP versions to the POP editors for publication.
+
+After a POP number has been assigned, a draft POP may be discussed further on
+PyLadies-ideas (getting a POP number assigned early can be useful for ease of
+reference, especially when multiple draft POPs are being considered at the
+same time). Eventually, all Standards Track POPs must  be sent to the
+`PyLadies-dev list <mailto:PyLadies-dev@PyLadies.org>`__ for review as described
+in the next section.
+
+Standards Track POPs consist of two parts, a design document and a
+reference implementation.  It is generally recommended that at least a
+prototype implementation be co-developed with the POP, as ideas that sound
+good in principle sometimes turn out to be impractical when subjected to the
+test of implementation.
+
+POP authors are responsible for collecting community feedback on a POP
+before submitting it for review. However, wherever possible, long
+open-ended discussions on public mailing lists should be avoided.
+Strategies to keep the discussions efficient include: setting up a
+separate SIG mailing list for the topic, having the POP author accept
+private comments in the early design phases, setting up a wiki page, etc.
+POP authors should use their discretion here.
+
+
+POP Review & Resolution
+-----------------------
+
+Once the authors have completed a POP, they may request a review for
+style and consistency from the POP editors.  However, the content and
+final acceptance of the POP must be requested of the BDFL, usually via
+an email to the PyLadies-dev mailing list.  POPs are reviewed by the
+BDFL and his chosen consultants, who may accept or reject a POP or
+send it back to the author(s) for revision.  For a POP that is
+predetermined to be acceptable (e.g., it is an obvious win as-is
+and/or its implementation has already been checked in) the BDFL may
+also initiate a POP review, first notifying the POP author(s) and
+giving them a chance to make revisions.
+
+The final authority for POP approval is the BDFL. However, whenever a new
+POP is put forward, any core developer that believes they are suitably
+experienced to make the final decision on that POP may offer to serve as
+the BDFL's delegate (or "POP czar") for that POP. If their self-nomination
+is accepted by the other core developers and the BDFL, then they will have
+the authority to approve (or reject) that POP. This process happens most
+frequently with POPs where the BDFL has granted in principle approval for
+*something* to be done, but there are details that need to be worked out
+before the POP can be accepted.
+
+If the final decision on a POP is to be made by a delegate rather than
+directly by the BDFL, this will be recorded by including the
+"BDFL-Delegate" header in the POP.
+
+POP review and resolution may also occur on a list other than PyLadies-dev
+(for example, distutils-sig for packaging related POPs that don't
+immediately affect the standard library). In this case, the "Discussions-To"
+heading in the POP will identify the appropriate alternative list where
+discussion, review and pronouncement on the POP will occur.
+
+For a POP to be accepted it must meet certain minimum criteria.  It
+must be a clear and complete description of the proposed enhancement.
+The enhancement must represent a net improvement.  The proposed
+implementation, if applicable, must be solid and must not complicate
+the interpreter unduly.  Finally, a proposed enhancement must be
+"PyLadiesic" in order to be accepted by the BDFL.  (However, "PyLadiesic"
+is an imprecise term; it may be defined as whatever is acceptable to
+the BDFL.  This logic is intentionally circular.)  See POP 2 [2]_ for
+standard library module acceptance criteria.
+
+Once a POP has been accepted, the reference implementation must be
+completed.  When the reference implementation is complete and incorporated
+into the main source code repository, the status will be changed to "Final".
+
+A POP can also be assigned status "Deferred".  The POP author or an
+editor can assign the POP this status when no progress is being made
+on the POP.  Once a POP is deferred, a POP editor can re-assign it
+to draft status.
+
+A POP can also be "Rejected".  Perhaps after all is said and done it
+was not a good idea.  It is still important to have a record of this
+fact. The "Withdrawn" status is similar - it means that the POP author
+themselves has decided that the POP is actually a bad idea, or has
+accepted that a competing proposal is a better alternative.
+
+When a POP is Accepted, Rejected or Withdrawn, the POP should be updated
+accordingly. In addition to updating the status field, at the very least
+the Resolution header should be added with a link to the relevant post
+in the PyLadies-dev mailing list archives.
+
+POPs can also be superseded by a different POP, rendering the original
+obsolete.  This is intended for Informational POPs, where version 2 of
+an API can replace version 1.
+
+The possible paths of the status of POPs are as follows:
+
+.. image:: POP-0001-1.png
+
+Some Informational and Process POPs may also have a status of "Active"
+if they are never meant to be completed.  E.g. POP 1 (this POP).
+
+
+POP Maintenance
+---------------
+
+In general, Standards track POPs are no longer modified after they have
+reached the Final state. Once a POP has been completed, the Language and
+Standard Library References become the formal documentation of the expected
+behavior.
+
+Informational and Process POPs may be updated over time to reflect changes
+to development practices and other details. The precise process followed in
+these cases will depend on the nature and purpose of the POP being updated.
+
+
+
+What belongs in a successful POP?
+=================================
+
+Each POP should have the following parts:
+
+1. Preamble -- RFC 822 style headers containing meta-data about the
+   POP, including the POP number, a short descriptive title (limited
+   to a maximum of 44 characters), the names, and optionally the
+   contact info for each author, etc.
+
+2. Abstract -- a short (~200 word) description of the technical issue
+   being addressed.
+
+3. Copyright/public domain -- Each POP must either be explicitly
+   labeled as placed in the public domain (see this POP as an
+   example) or licensed under the `Open Publication License`_.
+
+4. Specification -- The technical specification should describe the
+   syntax and semantics of any new language feature.  The
+   specification should be detailed enough to allow competing,
+   interoperable implementations for at least the current major PyLadies
+   platforms (CPyLadies, Jython, IronPyLadies, PyPy).
+
+5. Motivation -- The motivation is critical for POPs that want to
+   change the PyLadies language.  It should clearly explain why the
+   existing language specification is inadequate to address the
+   problem that the POP solves.  POP submissions without sufficient
+   motivation may be rejected outright.
+
+6. Rationale -- The rationale fleshes out the specification by
+   describing what motivated the design and why particular design
+   decisions were made.  It should describe alternate designs that
+   were considered and related work, e.g. how the feature is supported
+   in other languages.
+
+   The rationale should provide evidence of consensus within the
+   community and discuss important objections or concerns raised
+   during discussion.
+
+7. Backwards Compatibility -- All POPs that introduce backwards
+   incompatibilities must include a section describing these
+   incompatibilities and their severity.  The POP must explain how the
+   author proposes to deal with these incompatibilities.  POP
+   submissions without a sufficient backwards compatibility treatise
+   may be rejected outright.
+
+8. Reference Implementation -- The reference implementation must be
+   completed before any POP is given status "Final", but it need not
+   be completed before the POP is accepted.  While there is merit
+   to the approach of reaching consensus on the specification and
+   rationale before writing code, the principle of "rough consensus
+   and running code" is still useful when it comes to resolving many
+   discussions of API details.
+
+   The final implementation must include test code and documentation
+   appropriate for either the PyLadies language reference or the
+   standard library reference.
+
+
+POP Formats and Templates
+=========================
+
+There are two POP formats available to authors: plaintext and
+reStructuredText_.  Both are UTF-8-encoded text files.
+
+Plaintext POPs are written with minimal structural markup that adheres
+to a rigid style.  POP 9 contains a instructions and a template [3]_
+you can use to get started writing your plaintext POP.
+
+ReStructuredText_ POPs allow for rich markup that is still quite easy
+to read, but results in much better-looking and more functional HTML.
+POP 12 contains instructions and a template [4]_ for reStructuredText
+POPs.
+
+There is a PyLadies script that converts both styles of POPs to HTML for
+viewing on the web [5]_.  Parsing and conversion of plaintext POPs is
+self-contained within the script.  reStructuredText POPs are parsed
+and converted by Docutils_ code called from the script.
+
+
+POP Header Preamble
+===================
+
+Each POP must begin with an RFC 822 style header preamble.  The headers
+must appear in the following order.  Headers marked with "*" are
+optional and are described below.  All other headers are required. ::
+
+    POP: <POP number>
+    Title: <POP title>
+    Version: <version string>
+    Last-Modified: <date string>
+    Author: <list of authors' real names and optionally, email addrs>
+  * BDFL-Delegate: <POP czar's real name>
+  * Discussions-To: <email address>
+    Status: <Draft | Active | Accepted | Deferred | Rejected |
+             Withdrawn | Final | Superseded>
+    Type: <Standards Track | Informational | Process>
+  * Content-Type: <text/plain | text/x-rst>
+  * Requires: <POP numbers>
+    Created: <date created on, in dd-mmm-yyyy format>
+  * PyLadies-Version: <version number>
+    Post-History: <dates of postings to PyLadies-list and PyLadies-dev>
+  * Replaces: <POP number>
+  * Superseded-By: <POP number>
+  * Resolution: <url>
+
+The Author header lists the names, and optionally the email addresses
+of all the authors/owners of the POP.  The format of the Author header
+value must be
+
+    Random J. User <address@dom.ain>
+
+if the email address is included, and just
+
+    Random J. User
+
+if the address is not given.  For historical reasons the format
+"address@dom.ain (Random J. User)" may appear in a POP, however new
+POPs must use the mandated format above, and it is acceptable to
+change to this format when POPs are updated.
+
+If there are multiple authors, each should be on a separate line
+following RFC 2822 continuation line conventions.  Note that personal
+email addresses in POPs will be obscured as a defense against spam
+harvesters.
+
+The BDFL-Delegate field is used to record cases where the final decision to
+approve or reject a POP rests with someone other than the BDFL. (The
+delegate's email address is currently omitted due to a limitation in the
+email address masking for reStructuredText POPs)
+
+*Note: The Resolution header is required for Standards Track POPs
+only.  It contains a URL that should point to an email message or
+other web resource where the pronouncement about the POP is made.*
+
+For a POP where final pronouncement will be made on a list other than
+PyLadies-dev, a Discussions-To header will indicate the mailing list
+or URL where the pronouncement will occur. A temporary Discussions-To header
+may also be used when a draft POP is being discussed prior to submission for
+pronouncement. No Discussions-To header is necessary if the POP is being
+discussed privately with the author, or on the PyLadies-list, PyLadies-ideas
+or PyLadies-dev mailing lists.  Note that email addresses in the
+Discussions-To header will not be obscured.
+
+The Type header specifies the type of POP: Standards Track,
+Informational, or Process.
+
+The format of a POP is specified with a Content-Type header.  The
+acceptable values are "text/plain" for plaintext POPs (see POP 9 [3]_)
+and "text/x-rst" for reStructuredText POPs (see POP 12 [4]_).
+Plaintext ("text/plain") is the default if no Content-Type header is
+present.
+
+The Created header records the date that the POP was assigned a
+number, while Post-History is used to record the dates of when new
+versions of the POP are posted to PyLadies-list and/or PyLadies-dev.  Both
+headers should be in dd-mmm-yyyy format, e.g. 14-Aug-2001.
+
+Standards Track POPs will typically have a PyLadies-Version header which
+indicates the version of PyLadies that the feature will be released with.
+Standards Track POPs without a PyLadies-Version header indicate
+interoperability standards that will initially be supported through
+external libraries and tools, and then supplemented by a later POP to
+add support to the standard library. Informational and Process POPs do
+not need a PyLadies-Version header.
+
+POPs may have a Requires header, indicating the POP numbers that this
+POP depends on.
+
+POPs may also have a Superseded-By header indicating that a POP has
+been rendered obsolete by a later document; the value is the number of
+the POP that replaces the current document.  The newer POP must have a
+Replaces header containing the number of the POP that it rendered
+obsolete.
+
+
+Auxiliary Files
+===============
+
+POPs may include auxiliary files such as diagrams.  Such files must be
+named ``POP-XXXX-Y.ext``, where "XXXX" is the POP number, "Y" is a
+serial number (starting at 1), and "ext" is replaced by the actual
+file extension (e.g. "png").
+
+
+Reporting POP Bugs, or Submitting POP Updates
+=============================================
+
+How you report a bug, or submit a POP update depends on several
+factors, such as the maturity of the POP, the preferences of the POP
+author, and the nature of your comments.  For the early draft stages
+of the POP, it's probably best to send your comments and changes
+directly to the POP author.  For more mature, or finished POPs you may
+want to submit corrections to the PyLadies `issue tracker`_ so that your
+changes don't get lost.  If the POP author is a PyLadies developer, assign the
+bug/patch to them, otherwise assign it to a POP editor.
+
+When in doubt about where to send your changes, please check first
+with the POP author and/or a POP editor.
+
+POP authors with hg push privileges for the POP repository can update the
+POPs themselves by using "hg push" to submit their changes.
+
+
+Transferring POP Ownership
+==========================
+
+It occasionally becomes necessary to transfer ownership of POPs to a
+new champion.  In general, it is preferable to retain the original author as
+a co-author of the transferred POP, but that's really up to the
+original author.  A good reason to transfer ownership is because the
+original author no longer has the time or interest in updating it or
+following through with the POP process, or has fallen off the face of
+the 'net (i.e. is unreachable or not responding to email).  A bad
+reason to transfer ownership is because the author doesn't agree with the
+direction of the POP.  One aim of the POP process is to try to build
+consensus around a POP, but if that's not possible, an author can always
+submit a competing POP.
+
+If you are interested in assuming ownership of a POP, send a message
+asking to take over, addressed to both the original author and the POP
+editors <POPs@PyLadies.org>.  If the original author doesn't respond to
+email in a timely manner, the POP editors will make a unilateral
+decision (it's not like such decisions can't be reversed :).
+
+
+POP Editor Responsibilities & Workflow
+======================================
+
+A POP editor must subscribe to the <POPs@PyLadies.org> list.  All
+correspondence related to POP administration should be sent (or forwarded) to
+<POPs@PyLadies.org> (but please do not cross-post!).
+
+For each new POP that comes in an editor does the following:
+
+* Read the POP to check if it is ready: sound and complete.  The ideas
+  must make technical sense, even if they don't seem likely to be
+  accepted.
+
+* The title should accurately describe the content.
+
+* Edit the POP for language (spelling, grammar, sentence structure,
+  etc.), markup (for reST POPs), code style (examples should match POP
+  8 & 7).
+
+If the POP isn't ready, an editor will send it back to the author for
+revision, with specific instructions.
+
+Once the POP is ready for the repository, a POP editor will:
+
+* Assign a POP number (almost always just the next available number,
+  but sometimes it's a special/joke number, like 666 or 3141).
+  (Clarification: For PyLadies 3, numbers in the 3000s were used for
+  Py3k-specific proposals.  But now that all new features go into
+  PyLadies 3 only, the process is back to using numbers in the 100s again.
+  Remember that numbers below 100 are meta-POPs.)
+
+* Add the POP to a local clone of the POP repository.  For mercurial workflow
+  instructions, follow `The PyLadies Developers Guide <http://docs.PyLadies.org/devguide>`_
+
+  The mercurial repo for the POPs is::
+
+    http://hg.PyLadies.org/POPs/
+
+* Run ``./genPOPindex.py`` and ``./POP2html.py <POP Number>`` to ensure they
+  are generated without errors. If either triggers errors, then the web site
+  will not be updated to reflect the POP changes.
+
+* Commit and push the new (or updated) POP
+
+* Monitor PyLadies.org to make sure the POP gets added to the site
+  properly. If it fails to appear, running ``make`` will build all of the
+  current POPs. If any of these are triggering errors, they must be
+  corrected before any POP will update on the site.
+
+* Send email back to the POP author with next steps (post to
+  PyLadies-list & -dev).
+
+Updates to existing POPs also come in to POPs@PyLadies.org.  Many POP
+authors are not PyLadies committers yet, so POP editors do the commits for them.
+
+Many POPs are written and maintained by developers with write access
+to the PyLadies codebase.  The POP editors monitor the PyLadies-checkins
+list for POP changes, and correct any structure, grammar, spelling, or
+markup mistakes they see.
+
+POP editors don't pass judgment on POPs.  They merely do the
+administrative & editorial part (which is generally a low volume task).
+
+Resources:
+
+* `Index of PyLadies Organization Proposals <http://www.PyLadies.org/dev/POPs/>`_
+
+* `Following PyLadies's Development
+  <http://docs.PyLadies.org/devguide/communication.html>`_
+
+* `PyLadies Developer's Guide <http://docs.PyLadies.org/devguide/>`_
+
+* `Frequently Asked Questions for Developers
+  <http://docs.PyLadies.org/devguide/faq.html>`_
+
+References and Footnotes
+========================
+
+.. [1] This historical record is available by the normal hg commands
+   for retrieving older revisions, and can also be browsed via HTTP here:
+   http://hg.PyLadies.org/POPs/
+
+.. [2] POP 2, Procedure for Adding New Modules, Faassen
+   (http://www.PyLadies.org/dev/POPs/POP-0002)
+
+.. [3] POP 9, Sample Plaintext POP Template, Warsaw
+   (http://www.PyLadies.org/dev/POPs/POP-0009)
+
+.. [4] POP 12, Sample reStructuredText POP Template, Goodger, Warsaw
+   (http://www.PyLadies.org/dev/POPs/POP-0012)
+
+.. [5] The script referred to here is POP2pyramid.py, the successor to
+   POP2html.py, both of which live in the same directory in the hg
+   repo as the POPs themselves.  Try ``POP2html.py --help`` for
+   details.  The URL for viewing POPs on the web is
+   http://www.PyLadies.org/dev/POPs/.
+
+.. _issue tracker:
+   http://bugs.PyLadies.org/
+
+.. _Open Publication License: http://www.opencontent.org/openpub/
+
+.. _reStructuredText: http://docutils.sourceforge.net/rst.html
+
+.. _Docutils: http://docutils.sourceforge.net/
+
+.. _POP repository: http://hg.PyLadies.org/POPs
+
+
+Copyright
+=========
+
+This document has been placed in the public domain.
+
+
+..
+   Local Variables:
+   mode: indented-text
+   indent-tabs-mode: nil
+   sentence-end-double-space: t
+   fill-column: 70
+   coding: utf-8
+   End:
